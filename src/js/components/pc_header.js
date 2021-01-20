@@ -47,14 +47,16 @@ class PCHeader extends React.Component {
     }
     var formData=this.props.form.getFieldsValue()
     console.log(formData)
-    fetch("http://rap2.taobao.org:38080/app/mock/253519/"+this.state.action+"/?username="+formData.userName+"&password="+formData.password+"&r_username="+formData.r_userName+"&r_password="+formData.r_password+"&r_confirmpassword="+formData.r_confirmpassword,myFetchOptions).
+    fetch("http://rap2api.taobao.org/app/mock/253519/"+this.state.action+"/?username="+formData.userName+"&password="+formData.password+"&r_username="+formData.r_userName+"&r_password="+formData.r_password+"&r_confirmpassword="+formData.r_confirmpassword,myFetchOptions).
 		then(response=>response.json()).then(json=>{
+      //console.log(json)
       this.setState({userNickName:json.NickUserName,userid:json.UserId});
       localStorage.userid= json.UserId;
 			localStorage.userNickName = json.NickUserName;
     });
     if (this.state.action=="login") {
-			this.setState({hasLogined:true});
+      this.setState({hasLogined:true});
+      //console.log(1,localStorage.userNickName)
 		}
 		message.success("请求成功！");
 		this.setModalVisible(false);

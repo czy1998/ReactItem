@@ -22,13 +22,15 @@ export default class PCNewsBlock extends React.Component {
   render() {
     const {news} = this.state;
     const newsList = news.length
-      ? news.map((newsItem, index) => (
+      ? news.map((newsItem, index) => { 
+        if(index<10){ 
+          return(
           <li key={index}>
             <Link to={`details/${newsItem.uniquekey}`} target="_blank">
               {newsItem.title}
             </Link>
-          </li>
-        ))
+          </li>)}
+        })
       : "没加载到数据";
     return (
       <div className="topNewsLits">

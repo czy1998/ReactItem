@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --open --port 3000 --contentBase src --hot"
+    "dev": "webpack-dev-server --open --port 3000 --contentBase src --hot --inline"
   },
   "dependencies": {
     "antd": "^2.1.0",

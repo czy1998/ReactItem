@@ -14,41 +14,51 @@ export default class MobileList extends React.Component {
       method: "GET",
     };
     fetch(
-      "http://v.juhe.cn/toutiao/index?type=" +this.props.type +"&key=b942c74e8c2f36161f431dbc4d17e936",myFetchOptions)
+      "http://v.juhe.cn/toutiao/index?type=" +
+        this.props.type +
+        "&key=b942c74e8c2f36161f431dbc4d17e936",
+      myFetchOptions
+    )
       .then((response) => response.json())
       .then((json) => this.setState({ news: json.result.data }));
-      
   }
   render() {
-    const {news} = this.state;
+    const { news } = this.state;
     const newsList = news.length
-      ? news.map((newsItem, index) => (
-          <section key={index} className='m_article list-item special_section clearfix'>
-            <Link to={`details/${newsItem.uniquekey}`} target="_blank">
-              <div className="m_article_img">
-                <img src={newsItem.thumbnail_pic_s} alt={newsItem.title}/>
-              </div>
-              <div className='m_article_info'>
-                <div className='m_article_title'>
-                  <span>{newsItem.title}</span>
-                </div>
-                <div className='m_article_desc clearfix'>
-                  <div className='m_article_desc_l'>
-                    <span className='m_article_channel'>{newsItem.category}</span>
-                    <span className='m_article_time'>{newsItem.date}</span>
+      ? news.map((newsItem, index) => {
+          if (index < this.props.count) {
+            return (
+              <section
+                key={index}
+                className="m_article list-item special_section clearfix"
+              >
+                <Link to={`details/${newsItem.uniquekey}`} target="_blank">
+                  <div className="m_article_img">
+                    <img src={newsItem.thumbnail_pic_s} alt={newsItem.title} />
                   </div>
-                </div>
-              </div>
-            </Link>
-          </section>
-        ))
+                  <div className="m_article_info">
+                    <div className="m_article_title">
+                      <span>{newsItem.title}</span>
+                    </div>
+                    <div className="m_article_desc clearfix">
+                      <div className="m_article_desc_l">
+                        <span className="m_article_channel">
+                          {newsItem.category}
+                        </span>
+                        <span className="m_article_time">{newsItem.date}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </section>
+            );
+          }
+        })
       : "没加载到数据";
     return (
       <div>
         <Row>
-          <Col span={24}>
-            {newsList}
-          </Col>
+          <Col span={24}>{newsList}</Col>
         </Row>
       </div>
     );

@@ -28,7 +28,7 @@ export default class PCNewsContainer extends React.Component {
                 </Carousel>
               </div>
               <div>
-                <PCNewsImageBlock type='guoji' width='400px' cartTitle='国际新闻' imageWidth='112px' />
+                <PCNewsImageBlock count={9} type='guoji' width='400px' cartTitle='国际新闻' imageWidth='112px' />
               </div>
             </div>
             <Tabs className='tabs_news'>
@@ -40,8 +40,8 @@ export default class PCNewsContainer extends React.Component {
               </TabPane>
             </Tabs>
             <div>
-              <PCNewsImageBlock type='yule' width='100%' cartTitle='娱乐新闻' imageWidth='112px' />
-              <PCNewsImageBlock type='guonei' width='100%' cartTitle='国内新闻' imageWidth='112px' />
+              <PCNewsImageBlock count={9} type='yule' width='100%' cartTitle='娱乐新闻' imageWidth='112px' />
+              <PCNewsImageBlock count={9} type='guonei' width='100%' cartTitle='国内新闻' imageWidth='112px' />
             </div>
           </Col>
           <Col span={2}></Col>
